@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit the Course</title>
+    <script type="text/javascript" src="./JS/Script.js">
+
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1 style="text-align: center;">Edit the Course</h1>
+
+        <div class="courseform">
+            <form action="http://localhost:8080/course/edit" method="post">
+                <label for="courseId">Course Id : </label>
+                <input type="text" id="cid" name="courseId"><br>
+                <label for="courseId">Course Name : </label>
+                <input type="text" id="cname" name="courseName"><br>
+                <label for="courseId">Course Duration in week : </label>
+                <input type="number" id="cduration" name="durationInWeeks"><br>
+                <label for="courseId">Trainer Name : </label>
+                <input type="text" id="ctname" name="trainerName"><br>
+
+                <button type="submit">Update</button>
+                <button type="button" onclick="backpage()">Back</button>
+            </form>
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        function backpage(){
+            window.location.href = "./courseList.html";
+        }
+
+        window.onload = function()
+        {
+            const courseData = JSON.parse(localStorage.getItem("editCourse"));
+
+            if(courseData)
+            {
+                document.getElementById("cid").value = courseData.courseId;
+                document.getElementById("cname").value = courseData.courseName;
+                document.getElementById("cduration").value = courseData.durationInWeeks;
+                document.getElementById("ctname").value = courseData.trainerName;
+            }
+        }
+    </script>
+    
+</body>
+</html>

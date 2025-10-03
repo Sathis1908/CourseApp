@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student Details</title>
+    <title>Add New Course</title>
     <script type="text/javascript" src="./JS/Script.js">
 
 
@@ -14,17 +14,17 @@
         <h1 style="text-align: center;">Add New Course</h1>
 
         <div class="courseform">
-            <form action="http://localhost:8080/course/enroll" method="post">
-                <label for="courseId">Student Name : </label>
-                <input type="text" id="name" name="name"><br>
-                <label for="courseId">Email ID : </label>
-                <input type="text" id="mailId" name="mailId"><br>
-                <label for="courseId">Phone : </label>
-                <input type="number" id="phone" name="phone"><br>
+            <form action="http://localhost:8080/course/add" method="post">
+                <label for="courseId">Course Id : </label>
+                <input type="text" id="cid" name="courseId"><br>
                 <label for="courseId">Course Name : </label>
                 <input type="text" id="cname" name="courseName"><br>
+                <label for="courseId">Course Duration in week : </label>
+                <input type="number" id="cduration" name="durationInWeeks"><br>
+                <label for="courseId">Trainer Name : </label>
+                <input type="text" id="ctname" name="trainerName"><br>
 
-                <button type="submit" onclick="addstudent()">Add Student</button>
+                <button type="submit" onclick="addcourse()">Add Course</button>
                 <button type="button" onclick="backpage()">Back</button>
             </form>
         </div>
@@ -32,7 +32,7 @@
     </div>
     <script type="text/javascript">
         function backpage(){
-            window.location.href = "../index.html";
+            window.location.href = "./courseList.html";
         }
         function addcourse()
         {

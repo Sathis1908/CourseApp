@@ -31,3 +31,57 @@ function showStudent()
 
     });
 }
+
+function showCourse()
+{
+    fetch("http://localhost:8080/course/list")
+    .then((response) => response.json())
+    .then((courses) =>
+    {
+        const datatable = document.getElementById("courselist");
+        courses.forEach(course => {
+            const rowlist = course;
+            var row = `<tr>
+            <td>${course.courseId}</td>
+            <td>${course.courseName}</td>
+            <td>${course.durationInWeeks}</td>
+            <td>${course.trainerName}</td>
+            <td><button onclick= editrow(${course.courseId},'${course.courseName}',${course.durationInWeeks},'${course.trainerName}')>Edit</button></td>
+            <td><button onclick= deleterow(${course.courseId})>Delete</button></td>`
+            datatable.innerHTML += row;
+
+        });
+    });
+}
+
+function editrow(courseId,courseName,durationInWeeks,trainerName)
+{
+    window.location.href = "../html/updatecourse.html"
+    alert("Update")
+    localStorage.setItem("editCourse", JSON.stringify({
+    courseId,
+    courseName,
+    durationInWeeks,
+    trainerName
+  }));
+}
+
+
+
+function deleterow(id)
+{
+    if (!confirm("Are you sure you want to delete this item?")) return;
+
+    fetch(`http://localhost:8080/course/delete/${id}`,{method : 'DELETE'})
+    .then((response) => {
+        if(response.ok)
+        {
+            alert("Delete successfully")
+            location.reload();
+        }
+        else{
+            alert("Delete failed!")
+        }
+    });
+}
+

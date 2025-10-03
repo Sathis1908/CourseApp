@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <script type="text/javascript" src="../JS/Script.js"></script>
+</head>
+<body>
+    <div class="header"><h1 style="text-align: center;">Available Course List</h1></div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Duration in Week</th>
+            <th>Trainer Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tbody id="courselist"></tbody>
+
+    </table>
+    <div>
+        <button onclick="addnewcourse()">Add Course</button>
+        <button onclick="back()">Back</button>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            showCourse();
+        }
+
+        function back()
+        {
+            window.location.href="../index.html";
+        }
+
+        function addnewcourse()
+        {
+            window.location.href = "./addcourse.html";
+        }
+        
+
+    </script>
+</body>
+</html>
