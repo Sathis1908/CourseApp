@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit the Course</title>
-    <script type="text/javascript" src="./JS/Script.js">
+    <link rel="stylesheet" href="../CSS/style.css">
 
-
-    </script>
+    <script type="text/javascript" src="../JS/Script.js"></script>
 </head>
 <body>
     <div class="header">
         <h1 style="text-align: center;">Edit the Course</h1>
 
         <div class="courseform">
-            <form action="http://localhost:8080/course/edit" method="post">
+            <form id="cForm">
                 <label for="courseId">Course Id : </label>
                 <input type="text" id="cid" name="courseId"><br>
                 <label for="courseId">Course Name : </label>
@@ -23,9 +22,10 @@
                 <input type="number" id="cduration" name="durationInWeeks"><br>
                 <label for="courseId">Trainer Name : </label>
                 <input type="text" id="ctname" name="trainerName"><br>
-
+                <div class="button-group">
                 <button type="submit">Update</button>
                 <button type="button" onclick="backpage()">Back</button>
+                </div>
             </form>
         </div>
         
@@ -47,6 +47,39 @@
                 document.getElementById("ctname").value = courseData.trainerName;
             }
         }
+
+        document.getElementById("cForm").addEventListener("submit",function(e){
+            
+            e.preventDefault();
+
+            const formData = new URLSearchParams();
+            formData.append("courseId",document.getElementById("cid").value);
+            formData.append("courseName",document.getElementById("cname").value);
+            formData.append("durationInWeeks",document.getElementById("cduration").value);
+            formData.append("trainerName",document.getElementById("ctname").value);
+
+          
+            fetch("http://localhost:8080/course/edit",{
+                method: "PUT",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: formData.toString()
+            })
+            .then(res => {
+                if(res)
+                {
+                    alert("Updated Successfully")
+                    window.location.href = "./courseList.html";
+                }
+                else{
+                    alert("Updation Faild")
+                }
+            })
+            .catch(err => {
+            console.error("Error:", err);
+            alert("Server error during update");
+        });
+            
+        });
     </script>
     
 </body>

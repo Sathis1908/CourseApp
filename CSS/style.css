@@ -1,0 +1,176 @@
+/* ================== General Page Styles ================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================== Header ================== */
+.header {
+    max-width: 900px;
+    margin: 40px auto 20px auto;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ================== Buttons ================== */
+button {
+    padding: 12px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+button[type="button"], .body button {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+button[type="button"]:hover, .body button:hover {
+    background-color: #495057;
+}
+
+/* ================== Course Form ================== */
+.courseform {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.courseform label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.courseform input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.courseform input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+/* ================== Tables ================== */
+table {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+/* ================== Body Buttons (Home Page) ================== */
+.body {
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.body button {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 640px) {
+    .header, table, .courseform, .body {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+/* ================== Button Group Styles ================== */
+.button-group {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between; /* Buttons side by side */
+    gap: 10px;
+}
+
+/* General buttons inside the button group */
+.button-group button {
+    flex: 1; /* Make buttons equal width */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+/* Add Course button style */
+.button-group button:nth-child(1) {
+    background-color: #007BFF; /* Green color */
+}
+
+.button-group button:nth-child(1):hover {
+    background-color: #218838;
+}
+
+/* Back button style */
+.button-group button:nth-child(2) {
+    background-color: #6c757d; /* Gray color */
+}
+
+.button-group button:nth-child(2):hover {
+    background-color: #495057;
+}

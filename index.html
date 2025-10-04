@@ -1,26 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="./JS/Script.js"></script>
-    <!-- <script>
-        function studentlist()
-        {
-            alert("student");
-            window.location.pathname("./html/studentList.html");
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK Institute Dashboard</title>
+<script type="text/javascript" src="./JS/Script.js"></script>
+<style>
+    /* ================== Body & Background Image ================== */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Dark overlay for readability */
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+
+    /* ================== Header ================== */
+    .header {
+        margin-top: 50px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .header h1 {
+        font-size: 5.5em;
+        font-family:'sans-serif';
+        font-weight:bolder;
+        letter-spacing: 2px;
+        color: #09d8d2; /* light cyan to match sea-wave background */
+        text-shadow: 0 0 20px #38a4be, 0 0 40px #2086b2;
+        transition: 0.3s;
+    }
+
+    .header h1:hover {
+        text-shadow: 0 0 30px #fff, 0 0 50px #2020b2;
+    }
+
+    /* ================== Buttons ================== */
+    .body {
+        display: flex;
+        gap: 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        z-index: 1;
+        position: relative;
+    }
+
+    .body button {
+        flex: 1;
+        min-width: 180px;
+        padding: 25px 0;
+        font-size: 1.3em;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(135deg, #20B2AA, #00CED1); /* teal to aqua gradient */
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: all 0.4s;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .body button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        background: linear-gradient(135deg, #00CED1, #48D1CC); /* hover brighter teal */
+        text-shadow: 0 0 10px #fff;
+    }
+
+    /* ================== Responsive ================== */
+    @media (max-width: 900px) {
+        .body {
+            flex-direction: column;
+            gap: 20px;
+            width: 80%;
         }
-    </script> -->
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 2.2em;
+        }
+        .body button {
+            padding: 18px 0;
+            font-size: 1.1em;
+        }
+    }
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1 style="text-align: center;">SK Institute</h1>
-    </div>
+    <div id="dashboardPage">
+        <div class="header">
+            <h1>SK Institute</h1>
+        </div>
 
-    <div class="body">
-        <button onclick="enrolled()">Enrolled</button><br>
-        <button onclick="courselist()">Course List</button><br>
-        <button onclick="studentlist()">Student List</button>
-    </div>
-    
+        <div class="body">
+            <button id="enrolledBtn" onclick="enrolled()">Enrolled Students</button>
+            <button onclick="courselist()">Course List</button>
+            <button onclick="studentlist()">Student List</button>
+        </div>
 
+        <div class="button-group">
+            <button onclick="addnewcourse()">Add Course</button>
+            <button onclick="back()">Back</button>
+        </div>
+    </div>
 </body>
+
 </html>

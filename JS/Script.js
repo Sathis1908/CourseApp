@@ -46,8 +46,8 @@ function showCourse()
             <td>${course.courseName}</td>
             <td>${course.durationInWeeks}</td>
             <td>${course.trainerName}</td>
-            <td><button onclick= editrow(${course.courseId},'${course.courseName}',${course.durationInWeeks},'${course.trainerName}')>Edit</button></td>
-            <td><button onclick= deleterow(${course.courseId})>Delete</button></td>`
+            <td><button style="background-color: rgb(12, 193, 12)"  onclick="editrow(${course.courseId},'${course.courseName}',${course.durationInWeeks},'${course.trainerName}')">Edit</button></td>   
+            <td><button style="background-color: rgba(243, 45, 45, 1)" onclick= deleterow(${course.courseId})>Delete</button></td>`
             datatable.innerHTML += row;
 
         });
@@ -56,8 +56,7 @@ function showCourse()
 
 function editrow(courseId,courseName,durationInWeeks,trainerName)
 {
-    window.location.href = "../html/updatecourse.html"
-    alert("Update")
+    window.location.href = "../html/updatecourse.html";
     localStorage.setItem("editCourse", JSON.stringify({
     courseId,
     courseName,
@@ -84,4 +83,5 @@ function deleterow(id)
         }
     });
 }
+
 

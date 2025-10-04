@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student Details</title>
-    <script type="text/javascript" src="./JS/Script.js">
+    <link rel="stylesheet" href="../CSS/style.css">
+    
+    <script type="text/javascript" src="../JS/Script.js">
 
 
     </script>
@@ -14,18 +16,19 @@
         <h1 style="text-align: center;">Add New Course</h1>
 
         <div class="courseform">
-            <form action="http://localhost:8080/course/enroll" method="post">
+            <form id="courseForm">
                 <label for="courseId">Student Name : </label>
-                <input type="text" id="name" name="name"><br>
-                <label for="courseId">Email ID : </label>
+                <input type="text" id="sname" name="name"><br>
+                <label for="mailid">Email ID : </label>
                 <input type="text" id="mailId" name="mailId"><br>
-                <label for="courseId">Phone : </label>
+                <label for="phone">Phone : </label>
                 <input type="number" id="phone" name="phone"><br>
-                <label for="courseId">Course Name : </label>
+                <label for="coursename">Course Name : </label>
                 <input type="text" id="cname" name="courseName"><br>
-
-                <button type="submit" onclick="addstudent()">Add Student</button>
+                <div class="button-group">
+                <button type="submit" style="background-color: ;">Add Student</button>
                 <button type="button" onclick="backpage()">Back</button>
+                </div>
             </form>
         </div>
         
@@ -34,11 +37,36 @@
         function backpage(){
             window.location.href = "../index.html";
         }
-        function addcourse()
-        {
-            alert("Course added sucessfully");
+        
+
+        document.getElementById("courseForm").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const student = {
+            name: document.getElementById("sname").value,
+            mailId: document.getElementById("mailId").value,
+            phone: document.getElementById("phone").value,
+            courseName: document.getElementById("cname").value,
+        };
+        alert(JSON.stringify(student));
+        fetch("http://localhost:8080/course/enroll",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(student)
             
-        }
+        })
+        .then(res => {
+            if(res)
+            {
+                alert("Enrolled Successfully")
+                
+            }
+            else{
+                alert("Enrolled Failed!")
+            }
+        });
+        window.location.href = "../html/enrolled.html";
+    });
         
     </script>
     
